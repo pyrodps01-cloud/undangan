@@ -1,4 +1,4 @@
-css
+<script>
 :root {
   --gold: #b8975f;
   --cream: #faf6f0;
