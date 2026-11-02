@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Undangan Pernikahan Piter & Dia</title>
+  <title>Undangan Pernikahan Peter & Ria</title>
   <style>
     :root {
       --krem: #faf5ec;
@@ -31,12 +31,15 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(160deg, #f3e7d3, #e4cfa8);
+      background:
+        linear-gradient(rgba(243, 231, 211, 0.82), rgba(228, 207, 168, 0.88)),
+        url("foto-sampul.jpg") center / cover no-repeat,
+        #ecd9b4;
       transition: opacity 1s ease, visibility 1s ease;
     }
     #sampul.tutup { opacity: 0; visibility: hidden; }
     .sampul-isi { padding: 24px; }
-    .sampul-isi .kecil {
+    .kecil {
       letter-spacing: 4px;
       font-size: 0.85rem;
       text-transform: uppercase;
@@ -57,7 +60,7 @@
       background: #ecd9b4;
       border: 2px solid var(--emas);
       border-radius: 6px;
-      box-shadow: 0 10px 30px rgba(74, 59, 42, 0.2);
+      box-shadow: 0 10px 30px rgba(74, 59, 42, 0.25);
       animation: melayang 3s ease-in-out infinite;
     }
     .amplop::before {
@@ -126,18 +129,32 @@
       background: linear-gradient(90deg, transparent, var(--emas), transparent);
     }
 
-    /* Hero */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+    /* ===== FOTO ===== */
+    .foto-utama {
+      width: 220px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 110px;
+      border: 4px solid var(--emas);
+      box-shadow: 0 10px 28px rgba(74, 59, 42, 0.25);
+      margin: 0 auto 28px;
+      display: block;
+      background: #ecd9b4;
     }
-    #hero h1 {
-      font-size: 3.2rem;
-      font-weight: normal;
-      margin: 12px 0;
+    .galeri {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .galeri img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid #e8d5b7;
+      box-shadow: 0 6px 18px rgba(74, 59, 42, 0.12);
+      background: #ecd9b4;
     }
 
     /* Hitung mundur */
@@ -173,15 +190,23 @@
       margin-bottom: 10px;
     }
 
-    /* Ayat */
-    .ayat {
-      font-style: italic;
-      color: var(--emas-tua);
-    }
+    .ayat { font-style: italic; color: var(--emas-tua); }
 
     footer {
       padding: 48px 24px 90px;
       background: #f1e4cc;
+    }
+    .foto-footer {
+      width: 100%;
+      max-width: 420px;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 3px solid var(--emas);
+      box-shadow: 0 8px 22px rgba(74, 59, 42, 0.2);
+      margin: 0 auto 28px;
+      display: block;
+      background: #ecd9b4;
     }
 
     /* Tombol musik */
@@ -212,8 +237,9 @@
     .reveal.tampil { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 480px) {
-      #hero h1 { font-size: 2.6rem; }
+      .sampul-isi h1 { font-size: 2.2rem; }
       .hitung div { width: 64px; }
+      .galeri img { height: 180px; }
     }
   </style>
 </head>
@@ -223,7 +249,7 @@
     <source src="musik.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- ===== SAMPUL ===== -->
+  <!-- ===== SAMPUL: satu-satunya tombol "Buka Undangan" ===== -->
   <div id="sampul">
     <div class="sampul-isi">
       <p class="kecil">Undangan Pernikahan</p>
@@ -234,11 +260,12 @@
     </div>
   </div>
 
-  <!-- ===== HERO ===== -->
-  <section id="hero">
+  <!-- ===== SAMBUTAN + FOTO UTAMA ===== -->
+  <section>
+    <img class="foto-utama reveal" src="foto-utama.jpg" alt="Foto Peter & Ria">
     <p class="label reveal">Kami Mengundang Anda</p>
-    <h1 class="reveal">Peter & Ria</h1>
-    <p class="reveal">Sabtu, 23 Maret 2029</p>
+    <h2 class="reveal">Dengan Hormat</h2>
+    <p class="reveal">Dengan penuh sukacita dan syukur kepada Tuhan, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada hari pernikahan kami.</p>
     <div class="garis reveal"></div>
     <div class="hitung reveal">
       <div><b id="hari">0</b><span>HARI</span></div>
@@ -246,15 +273,20 @@
       <div><b id="menit">0</b><span>MENIT</span></div>
       <div><b id="detik">0</b><span>DETIK</span></div>
     </div>
-  </section>
-
-  <!-- ===== SAMBUTAN ===== -->
-  <section>
-    <p class="label reveal">Salam Sukacita</p>
-    <h2 class="reveal">Dengan Hormat</h2>
-    <p class="reveal">Dengan penuh sukacita dan syukur kepada Tuhan, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dan memberikan doa restu pada hari pernikahan kami.</p>
     <div class="garis reveal"></div>
     <p class="ayat reveal">"[Tulis ayat Alkitab pilihan Anda di sini]"<br>— [Kitab pasal:ayat]</p>
+  </section>
+
+  <!-- ===== GALERI ===== -->
+  <section>
+    <p class="label reveal">Momen Kami</p>
+    <h2 class="reveal">Galeri</h2>
+    <div class="galeri reveal">
+      <img src="foto1.jpg" alt="Foto 1">
+      <img src="foto2.jpg" alt="Foto 2">
+      <img src="foto3.jpg" alt="Foto 3">
+      <img src="foto4.jpg" alt="Foto 4">
+    </div>
   </section>
 
   <!-- ===== ACARA ===== -->
@@ -289,6 +321,7 @@
   </section>
 
   <footer>
+    <img class="foto-footer reveal" src="foto-penutup.jpg" alt="Foto penutup">
     <p class="reveal">Merupakan kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.</p>
     <div class="garis reveal"></div>
     <p class="reveal">Kami yang berbahagia,</p>
@@ -335,7 +368,7 @@
       item.forEach(function (el) { pengamat.observe(el); });
     }
 
-    // Hitung mundur ke 23 Maret 2029, pukul 00.00 WITA (ubah jamnya bila perlu)
+    // Hitung mundur ke 23 Maret 2029 (ubah jamnya bila perlu)
     var target = new Date("2029-03-23T00:00:00+08:00").getTime();
     function hitung() {
       var sisa = target - Date.now();
@@ -353,7 +386,6 @@
     if (tamu) {
       var p = document.createElement("p");
       p.className = "kecil";
-      p.style.marginTop = "-20px";
       p.style.marginBottom = "24px";
       p.textContent = "Kepada Yth. " + tamu;
       document.querySelector(".sampul-isi h1").after(p);
