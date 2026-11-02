@@ -1,75 +1,69 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Undangan Pernikahan Piter & Dia</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #f5e9da, #e8d5c4);
-    font-family: Georgia, serif;
-  }
-  .wrapper { text-align: center; }
-  .envelope {
-    width: 280px;
-    height: 190px;
-    background: #fdf6ec;
-    border: 2px solid #c9a876;
-    position: relative;
-    margin: 0 auto 30px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    border-radius: 6px;
-  }
-  .envelope::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 0; height: 0;
-    border-left: 140px solid transparent;
-    border-right: 140px solid transparent;
-    border-top: 95px solid #e8d5b7;
-  }
-  h1 {
-    color: #6b4f2a;
-    font-size: 22px;
-    margin-bottom: 20px;
-  }
-  .btn-buka {
-    display: inline-block;
-    padding: 14px 36px;
-    background: #c9a876;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 16px;
-    letter-spacing: 1px;
-    box-shadow: 0 6px 15px rgba(201,168,118,0.5);
-    transition: transform 0.2s ease, background 0.2s ease;
-  }
-  .btn-buka:hover {
-    background: #b4925f;
-    transform: translateY(-3px);
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Peter & Ria</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f6efe6;
+      font-family: Georgia, serif;
+      color: #4a3b2a;
+      text-align: center;
+    }
+    .wrapper { padding: 24px; }
+    h1 { font-size: 2.2rem; margin-bottom: 8px; }
+    .tanggal { margin-bottom: 28px; letter-spacing: 2px; }
+    .envelope {
+      width: 220px;
+      height: 150px;
+      margin: 0 auto 32px;
+      background: #e8d5b7;
+      border: 2px solid #b8935a;
+      border-radius: 6px;
+      position: relative;
+    }
+    .envelope::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      border-left: 108px solid transparent;
+      border-right: 108px solid transparent;
+      border-top: 85px solid #d4b88a;
+    }
+    .btn-buka {
+      display: inline-block;
+      padding: 12px 28px;
+      background: #b8935a;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      transition: transform 0.2s;
+    }
+    .btn-buka:hover { transform: translateY(-3px); }
+  </style>
 </head>
 <body>
-  <audio id="musik-undangan" src="Piter.mp3" loop></audio>
+  <audio id="musik-undangan" loop>
+    <source src="musik.mp3" type="audio/mpeg">
+  </audio>
 
-<script>
-  var params = new URLSearchParams(window.location.search);
-  if (params.get("musik") === "aktif") {
-    document.getElementById("musik-undangan").play();
-  }
-</script>
-<div class="wrapper">
-  <h1>Piter & Dia</h1>
-  <div class="envelope"></div>
-  <a href="UndanganPernikahan.html" class="btn-buka">Buka Undangan</a>
-</div>
+  <div class="wrapper">
+    <h1>Peter & Ria</h1>
+    <p class="tanggal">23 Maret 2029</p>
+    <div class="envelope"></div>
+    <a href="UndanganPernikahan.html" class="btn-buka" onclick="putarMusik()">Buka Undangan</a>
+  </div>
+
+  <script>
+    function putarMusik() {
+      document.getElementById("musik-undangan").play();
+    }
+  </script>
 </body>
 </html>
